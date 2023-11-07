@@ -1,0 +1,85 @@
+import random
+
+print("-----Melcome to RPS-----")
+
+user_score = 0
+comp_score = 0
+ties = 0
+
+name = input("Enter your name :- ")
+print("""
+Winning  Rules:
+1. paper vs Rock --> Paper
+2. Rock vs Scissors --> Rock
+3. Scissor vs Paper --> Scissors""")
+print()
+
+while True:
+    print("""Choice are:
+    1. Rock
+    2. Paper
+    3. Scissors""")
+    choise = int(input("Enter your choice from 1-3: "))
+    print()
+    while choise > 3 or choise < 1:
+        choise = int(input("enter valid input :- "))
+
+    if choise == 1:
+        user_choise = "Rock"
+    elif choise == 2:
+        user_choise = "Paper"
+    else:
+        user_choise = "Scissors"
+
+    print("The uses's choise is",user_choise)
+    print("Now it is computer turn")
+
+    computer = random.randint(1,3)
+
+    if computer == 1:
+        comp_choise = "Rock"
+    elif computer == 2:
+        comp_choise = "Paper"
+    else:
+        comp_choise = "Scissors"
+
+    print("The computer's choise is",comp_choise)
+
+    if ((user_choise == "Paper" and comp_choise == "Rock") or (user_choise == "Rock" and comp_choise == "Paper")):
+        print("Paper win")
+        result ="Paper"
+
+    elif ((user_choise == "Scissors" and comp_choise == "Rock" or (user_choise == "Rock" and comp_choise == "Scissors"))):
+        print("Rock win")
+        result = "Rock"
+
+    elif (user_choise == comp_choise):
+        print("it's a tie")
+        result = "tie"
+    else:
+        print("Scissors")
+        result = "Scissors"
+
+    if result == "tie":
+        ties += 1
+
+    elif result == user_choise:
+        print("user wins")
+        user_score += 1
+    else:
+        print("computer wins")
+        comp_score += 1
+
+    print("Score are")
+    print(name,"user's score is",user_score)
+    print("computer's score is",comp_score)
+    print("ties are",ties)
+
+    repeat = input("do you want to play again? ")
+    if repeat == "no" or repeat ==" No":
+        break
+print("game over!")
+print("Thanks for playing")
+
+
+
